@@ -6,7 +6,7 @@ description:
   fr: "Pour participer à l'inventaire des préenseignes publicitaires en France, et recenser celles qui sont illégales."
 groups: 
   - 
-    icon: "https://wiki.openstreetmap.org/wiki/File:Indication.svg"
+    icon: "https://wiki.openstreetmap.org/w/images/e/e8/Indication.svg"
     items: 
       - 
         constraints: 
@@ -17,7 +17,7 @@ groups:
               value: illégal
             condition: 
               type: EQUALS
-              value: autres
+              value: other
             source: 
               key: message
               type: TAG
@@ -28,7 +28,7 @@ groups:
               value: publicité
             condition: 
               type: EQUALS
-              value: autres
+              value: other
             source: 
               key: message
               type: TAG
@@ -36,7 +36,7 @@ groups:
           default: "Une préenseigne publicitaire, dispositif publicitaire hors-agglomération, pour présignaliser une activité."
           en: "An indicator board found along a rural road, which advertises the proximity of a craft/commercial/industrial activity."
           fr: "Une préenseigne publicitaire, dispositif publicitaire hors-agglomération, pour présignaliser une activité."
-        icon: "https://wiki.openstreetmap.org/wiki/File:Indication.svg"
+        icon: "https://wiki.openstreetmap.org/w/images/e/e8/Indication.svg"
         keywords: 
           default: 
             - "préenseigne publicité"
@@ -49,67 +49,99 @@ groups:
           en: "Advertising indicator board"
           fr: "Préenseigne publicitaire"
         name: advertising=board
-        query: "node['advertising'='board']['legal_type:FR'='préenseigne']({{bbox}});out meta;out meta center;"
+        query: "node['advertising'='board']['legal_type:FR'='préenseigne']({{bbox}});node['advertising'='board']['legal_type:FR'='publicité']({{bbox}});out meta;out meta center;"
         tags: 
           - 
+            key: man_made
+            show: false
+            type: CONSTANT
+            value: advertising
+          - 
             key: advertising
+            show: false
             type: CONSTANT
             value: board
           - 
             key: support
+            show: false
             type: CONSTANT
             value: post
           - 
-            key: man_made
-            type: CONSTANT
-            value: advertising
-          - 
             key: size
+            show: false
             type: CONSTANT
             value: 1*1.5
           - 
+            description: 
+              default: "Annonceur ou opérateur du panneau"
+              en: "Advertiser or operator board"
+              fr: "Annonceur ou opérateur du panneau"
             key: operator
             required: false
             type: TEXT
           - 
+            description: 
+              default: "Le panneau est-il sur le domaine public ou sur un fonds privé ?"
+              en: "Is the board on public ou private domain ?"
+              fr: "Le panneau est-il sur le domaine public ou sur un fonds privé ?"
             key: land_property
+            required: false
             type: SINGLE_CHOICE
             values: 
-              - private
-              - public
+              - 
+                default: "Propriété privée"
+                en: "Private property"
+                fr: "Propriété privée"
+                private: ~
+              - 
+                default: "Domaine public"
+                en: "Public domain"
+                fr: "Domaine public"
+                public: ~
           - 
+            description: 
+              default: "Seules 4 types d'activités peuvent être annoncées sur une préenseigne publicitaire en France."
+              en: "Only 4 types of activities can use indication board in France."
+              fr: "Seules 4 types d'activités peuvent être annoncées sur une préenseigne publicitaire en France."
             key: message
+            required: true
             type: SINGLE_CHOICE
             values: 
-              - terroir
-              - "monument historique"
-              - culturel
-              - "exceptionnel & temporaire"
-              - autres
-          - 
-            key: "legal_status:FR"
-            type: SINGLE_CHOICE
-            values: 
-              - légal
-              - "à vérifier"
-              - illégal
-          - 
-            key: "legal_type:FR"
-            type: SINGLE_CHOICE
-            values: 
-              - publicité
-              - préenseigne
-        url: "https://wiki.openstreetmap.org/wiki/FR:Tag:advertising%3Dboard"
+              - 
+                default: "Fabrication ou vente produits terroirs par des entreprises locales"
+                en: "Manufacturing or selling products terroirs from local businesses"
+                fr: "Fabrication ou vente produits terroirs par des entreprises locales"
+                terroir: ~
+              - 
+                default: "Monument historique inscrit ou classé ouvert à la visite"
+                en: "Historical monument open to visitors"
+                fr: "Monument historique inscrit ou classé ouvert à la visite"
+                historic_monument: ~
+              - 
+                cultural: ~
+                default: "Activités culturelles (spectacles vivants, cinématographiques, exposition arts plastiques)"
+                en: "Cultural activities (performing arts, film, visual arts exhibition)"
+                fr: "Activités culturelles (spectacles vivants, cinématographiques, exposition arts plastiques)"
+              - 
+                default: "A titre temporaire, opérations et manifestations exceptionnelles"
+                en: "On a temporary basis, exceptional operations and events"
+                fr: "A titre temporaire, opérations et manifestations exceptionnelles"
+                temporary: ~
+              - 
+                default: "Toute autre activité"
+                en: "Any other activity"
+                fr: "Toute autre activité"
+                other: ~
+        url: "http://wiki.openstreetmap.org/wiki/FR:Tag:advertising%3Dboard"
     name: 
       default: Publicité
       en: Advertising
       fr: Publicité
-    url: "https://wiki.openstreetmap.org/wiki/Category:Advertising"
-image: "https://wiki.openstreetmap.org/wiki/File:Indication.svg"
-link: "https://github.com/jawg/h2geo-presets"
+    url: "http://wiki.openstreetmap.org/wiki/Category:Advertising"
+image: "https://upload.wikimedia.org/wikipedia/commons/a/a1/Pr%C3%A9enseignes_publicitaires.jpg"
+link: "http://github.com/jawg/h2geo-presets"
 name: 
   default: "Préenseigne publicitaire"
-  en: "Advertising indication board"
+  en: "Advertising indicator board"
   fr: "Préenseigne publicitaire"
-version: "0.1"
-
+version: "0.2"
