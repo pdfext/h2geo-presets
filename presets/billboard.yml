@@ -1,0 +1,264 @@
+--- 
+author: PaDe
+description: 
+  default: "Pour faire l'inventaire des panneaux publicitaires."
+  en: "To do the inventory of advertising billboards."
+  fr: "Pour faire l'inventaire des panneaux publicitaires en France."
+groups: 
+  - 
+    icon: "http://wiki.openstreetmap.org/w/images/d/d3/Billboard_trunk.svg"
+    items: 
+      - 
+        constraints: 
+          - 
+            action: 
+              key: luminous
+              type: SET_TAG_VALUE
+              value: true
+            condition: 
+              type: EQUALS
+              value: glasscase
+            source: 
+              key: type
+              type: TAG
+          - 
+            action: 
+              key: lit
+              type: SET_TAG_VALUE
+              value: false
+            condition: 
+              type: EQUALS
+              value: glasscase
+            source: 
+              key: type
+              type: TAG
+          - 
+            action: 
+              key: size
+              type: SET_TAG_VALUE
+              value: 2*2
+            condition: 
+              type: EQUALS
+              value: 4
+            source: 
+              key: display_surface
+              type: TAG
+          - 
+            action: 
+              key: size
+              type: SET_TAG_VALUE
+              value: 3.2*2.5
+            condition: 
+              type: EQUALS
+              value: 84
+            source: 
+              key: display_surface
+              type: TAG
+          - 
+            action: 
+              key: size
+              type: SET_TAG_VALUE
+              value: 4*3
+            condition: 
+              type: EQUALS
+              value: 12
+            source: 
+              key: display_surface
+              type: TAG
+          - 
+            action: 
+              key: animated
+              type: SET_TAG_VALUE
+              value: false
+            condition: 
+              type: EQUALS
+              value: glue
+            source: 
+              key: type
+              type: TAG
+        description: 
+          default: "Un panneau publicitaire grand format."
+          en: "A large size billboard."
+          fr: "Un panneau publicitaire grand format."
+        icon: "http://wiki.openstreetmap.org/w/images/d/d3/Billboard_trunk.svg"
+        keywords: 
+          default: 
+            - "panneau publicité pub"
+          en: 
+            - "advertising billboard"
+          fr: 
+            - "panneau publicité pub"
+        label: 
+          default: "Panneau publicitaire"
+          en: "Advertising billboard"
+          fr: "Panneau publicitaire"
+        name: advertising=billboard
+        query: "node['advertising'='billboard']({{bbox}});out meta;out meta center;"
+        tags: 
+          - 
+            key: man_made
+            show: false
+            type: CONSTANT
+            value: advertising
+          - 
+            key: advertising
+            show: false
+            type: CONSTANT
+            value: billboard
+          - 
+            description: 
+              default: "Par quoi est supporté le panneau  ?"
+              en: "What does support the billboard ?"
+              fr: "Par quoi est supporté le panneau ?"
+            key: support
+            required: false
+            type: SINGLE_CHOICE
+            values: 
+              - 
+                default: "Tronc scellé au sol"
+                en: "Grounded trunk"
+                fr: "Tronc scellé au sol"
+                trunk: ~
+              - 
+                default: "Pylônes scellés au sol"
+                en: "Grounded poles"
+                fr: "Pylônes scellés au sol"
+                poles: ~
+              - 
+                default: "Panneau mural"
+                en: "Wall billboard"
+                fr: "Panneau mural"
+                wall: ~
+          - 
+            description: 
+              default: "Type du panneau"
+              en: "Billboard type"
+              fr: "Type du panneau"
+            key: type
+            required: false
+            type: SINGLE_CHOICE
+            values: 
+              - 
+                default: "un caisson lumineux souvent animé"
+                en: "a luminous box often animated"
+                fr: "un caisson lumineux souvent animé"
+                glasscase: ~
+              - 
+                default: "un caisson animé par rotation de triangles"
+                en: "an animated box with rotating trinagles"
+                fr: "un caisson animé par rotation de triangles"
+                trivision: ~
+              - 
+                default: "un panneau pour coller des affiches"
+                en: "a board to glue posters"
+                fr: "un panneau pour coller des affiches"
+                glue: ~
+          - 
+            description: 
+              default: "Surface d'affichage"
+              en: "Display surface"
+              fr: "Surface d'affichage"
+            key: display_surface
+            required: false
+            type: SINGLE_CHOICE
+            values: 
+              - 
+                4: ~
+                default: "2 m. de large sur 2 m. de haut, soit 4 m²"
+                en: "2 m. width on 2 m. height, then 4 m²"
+                fr: "2 m. de large sur 2 m. de haut, soit 4 m²"
+              - 
+                8: ~
+                default: "3.2 m. de large sur 2.5 m. de haut, soit 8 m²"
+                en: "3.2 m. width on 2.5 m. height, then 8 m²"
+                fr: "3.2 m. de large sur 2.5 m. de haut, soit 8 m²"
+              - 
+                12: ~
+                default: "3 m. de large sur 4 m. de haut, soit 12 m²"
+                en: "3 m. width on 4 m. height, then 12 m²"
+                fr: "3 m. de large sur 4 m. de haut, soit 12 m²"
+          - 
+            description: 
+              default: "Opérateur (ou annonceur)"
+              en: "Operator (or advertiser)"
+              fr: "Opérateur (ou annonceur)"
+            key: operator
+            required: false
+            type: SINGLE_CHOICE
+            values: 
+              - 
+                JCDecaux: ~
+              - 
+                ClearChannel: ~
+              - 
+                Giraudy: ~
+          - 
+            description: 
+              default: "Le panneau est-il sur le domaine public ou sur un fonds privé ?"
+              en: "Is the board on public ou private domain ?"
+              fr: "Le panneau est-il sur le domaine public ou sur un fonds privé ?"
+            key: land_property
+            required: false
+            type: SINGLE_CHOICE
+            values: 
+              - 
+                default: "Propriété privée"
+                en: "Private property"
+                fr: "Propriété privée"
+                private: ~
+              - 
+                default: "Domaine public"
+                en: "Public domain"
+                fr: "Domaine public"
+                public: ~
+          - 
+            description: 
+              default: "Type d'activité annoncée"
+              en: "Type of activity advertised"
+              fr: "Type d'activité annoncée"
+            key: message
+            required: true
+            type: SINGLE_CHOICE
+            values: 
+              - 
+                commercial: ~
+                default: "Panneau commercial"
+                en: "Commercial billboard"
+                fr: "Panneau commercial"
+              - 
+                default: "Mobilier urbain d'information"
+                en: "Urban information billboard"
+                fr: "Mobilier urbain d'information"
+                information: ~
+          - 
+            description: 
+              default: "Le panneau est-il éclairé ?"
+              en: "Is the billboard lit ?"
+              fr: "Le panneau est-il éclairé ?"
+            key: lit
+            required: true
+            type: SINGLE_CHOICE
+            values: 
+              - 
+                default: "Panneau éclairé"
+                en: "Lit billboard"
+                fr: "Panneau éclairé"
+                true: ~
+              - 
+                default: "Panneau non éclairé"
+                en: "Unlit billboard"
+                false: ~
+                fr: "Panneau non éclairé"
+        url: "https://wiki.openstreetmap.org/wiki/Tag%3Aadvertising%3Dbillboard"
+    name: 
+      default: Publicité
+      en: Advertising
+      fr: Publicité
+    url: "http://wiki.openstreetmap.org/wiki/Category:Advertising"
+image: "https://upload.wikimedia.org/wikipedia/commons/3/30/Legaal_aanplakken.jpg"
+link: "http://github.com/jawg/h2geo-presets"
+name: 
+  default: "Panneau publicitaire"
+  en: "Advertising billboard"
+  fr: "Panneau publicitaire"
+version: "0.1"
