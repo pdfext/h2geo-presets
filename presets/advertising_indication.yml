@@ -2,7 +2,7 @@ name:
   default: "Préenseigne publicitaire"
   en: "Advertising indicator board"
   fr: "Préenseigne publicitaire"
-version: '0.4'
+version: '0.53'
 author: PaDe
 link: http://github.com/jawg/h2geo-presets
 description:
@@ -21,7 +21,7 @@ groups:
       - name: advertising=board
         url: 'http://wiki.openstreetmap.org/wiki/Tag:advertising%3Dboard'
         icon: 'https://wiki.openstreetmap.org/w/images/e/e8/Indication.svg'
-        query: "(node['advertising'='board']['legal_type:FR'='préenseigne']({{bbox}});node['advertising'='board']['legal_type:FR'='publicité']({{bbox}}););out body;out skel qt;"
+        query: "(node['advertising'='board']['legal_type:FR'='préenseigne']({{bbox}});node['advertising'='board']['legal_type:FR'='publicité']({{bbox}}););out body;"
         label:
           default: "Préenseigne publicitaire"
           en: "Advertising indicator board"
@@ -72,14 +72,8 @@ groups:
               fr: "Le panneau est-il sur le domaine public ou sur un fonds privé ?"
               en: "Is the board on public ou private domain ?"
             values:
-              - private:
-                default: "Propriété privée"
-                fr: "Propriété privée"
-                en: "Private property"
-              - public:
-                default: "Domaine public"
-                fr: "Domaine public"
-                en: "Public domain"
+              - private: Propriété privée
+              - public: Domaine public
           - key: message
             type: SINGLE_CHOICE
             required: yes
@@ -108,10 +102,6 @@ groups:
                 default: "Toute autre activité"
                 fr: "Toute autre activité"
                 en: "Any other activity"
-            description:
-              default: "Seules 4 types d'activités peuvent être annoncées sur une préenseigne publicitaire en France."
-              en: "Only 4 types of activities can use indication board in France."
-              fr: "Seules 4 types d'activités peuvent être annoncées sur une préenseigne publicitaire en France."
         constraints:
           - source:
               type: TAG
@@ -173,5 +163,3 @@ groups:
               type: SET_TAG_VALUE
               key: legal_type:FR
               value: préenseigne
-
-
