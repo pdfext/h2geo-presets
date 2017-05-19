@@ -1,7 +1,7 @@
 name:
-  default: "Préenseigne publicitaire"
-  en: "Advertising indicator board"
-  fr: "Préenseigne publicitaire"
+  default: Préenseigne publicitaire
+  en: Advertising indicator board
+  fr: Préenseigne publicitaire
 version: '0.58'
 author: PaDe
 link: http://github.com/jawg/h2geo-presets
@@ -12,24 +12,24 @@ description:
 image: 'https://upload.wikimedia.org/wikipedia/commons/a/a1/Pr%C3%A9enseignes_publicitaires.jpg'
 groups:
   - name:
-      default: "Publicité"
-      en: "Advertising"
-      fr: "Publicité"
+      default: Publicité
+      en: Advertising
+      fr: Publicité
     icon: 'https://wiki.openstreetmap.org/w/images/e/e8/Indication.svg'
     url: 'http://wiki.openstreetmap.org/wiki/Category:Advertising'
     items:
       - name: advertising=board
         url: 'http://wiki.openstreetmap.org/wiki/Tag:advertising%3Dboard'
         icon: 'https://wiki.openstreetmap.org/w/images/e/e8/Indication.svg'
-        query: "(node['advertising'='board']['legal_type:FR'='préenseigne']({{bbox}});node['advertising'='board']['legal_type:FR'='publicité']({{bbox}}););out body;"
+        query: (node['advertising'='board']['legal_type:FR'='préenseigne']({{bbox}});node['advertising'='board']['legal_type:FR'='publicité']({{bbox}}););out body;
         label:
-          default: "Préenseigne publicitaire"
-          en: "Advertising indicator board"
-          fr: "Préenseigne publicitaire"
+          default: Préenseigne publicitaire
+          en: Advertising indicator board
+          fr: Préenseigne publicitaire
         description:
-          default: "Une préenseigne publicitaire = dispositif publicitaire hors-agglomération pour présignaliser une activité."
-          en: "An indicator board = advertising device along a rural road to advertise the proximity of a craft/commercial/industrial activity."
-          fr: "Une préenseigne publicitaire = dispositif publicitaire hors-agglomération pour présignaliser une activité."
+          default: Une préenseigne publicitaire = dispositif publicitaire hors-agglomération pour présignaliser une activité.
+          en: An indicator board = advertising device along a rural road to advertise the proximity of a craft/commercial/industrial activity.
+          fr: Une préenseigne publicitaire = dispositif publicitaire hors-agglomération pour présignaliser une activité.
         keywords:
           default:
             - préenseigne publicitaire
@@ -61,16 +61,16 @@ groups:
             type: TEXT
             required: false
             description:
-              default: "Annonceur ou opérateur du panneau"
-              fr: "Annonceur ou opérateur du panneau"
-              en: "Advertiser or operator board"
+              default: Annonceur ou opérateur du panneau
+              fr: Annonceur ou opérateur du panneau
+              en: Advertiser or operator board
           - key: land_property
             type: SINGLE_CHOICE
             required: true
             description:
-              default: "Le panneau est-il sur le domaine public ou sur un fonds privé ?"
-              fr: "Le panneau est-il sur le domaine public ou sur un fonds privé ?"
-              en: "Is the board on public ou private domain ?"
+              default: Le panneau est-il sur le domaine public ou sur un fonds privé ?
+              fr: Le panneau est-il sur le domaine public ou sur un fonds privé ?
+              en: Is the board on public ou private domain ?
             values:
               - private: Propriété privée
               - public: Domaine public
@@ -78,15 +78,30 @@ groups:
             type: SINGLE_CHOICE
             required: true
             description:
-              default: "Type d'activité annoncée"
-              fr: "Type d'activité annoncée"
-              en: "Type of activity advertised"
+              default: Type d'activité annoncée
+              fr: Type d'activité annoncée
+              en: Type of activity advertised
             values:
-              - terroir: "Fabrication ou vente produits terroirs par des entreprises locales"
-              - historic_monument: "Monument historique inscrit ou classé ouvert à la visite"
-              - cultural: "Activités culturelles (spectacles vivants ou cinématographiques/exposition arts plastiques)"
-              - temporary: "A titre temporaire  opérations et manifestations exceptionnelles"
-              - other: "Toute autre activité"
+              - terroir:
+                default: Fabrication ou vente produits terroirs par des entreprises locales
+                fr: Fabrication ou vente produits terroirs par des entreprises locales
+                en: Manufacturing or selling products terroirs from local businesses
+              - historic_monument:
+                default: Monument historique inscrit ou classé ouvert à la visite
+                fr: Monument historique inscrit ou classé ouvert à la visite
+                en: Historical monument open to visitors
+              - cultural:
+                default: Activités culturelles (spectacles vivants ou cinématographiques/exposition arts plastiques)
+                fr: Activités culturelles (spectacles vivants ou cinématographiques/exposition arts plastiques)
+                en: Cultural activities (performing arts or films/visual arts exhibition)
+              - temporary:
+                default: A titre temporaire  opérations et manifestations exceptionnelles
+                fr: A titre temporaire  opérations et manifestations exceptionnelles
+                en: On a temporary basis  exceptional operations and events
+              - other:
+                default: Toute autre activité
+                fr: Toute autre activité
+                en: Any other activity
         constraints:
           - source:
               type: TAG
